@@ -1,0 +1,33 @@
+.form-admin{
+    height: 100vh;
+}
+.hide-checkbox .MuiDataGrid-checkboxInput {
+    display: none;
+    
+  }
+
+  .hide-checkbox .MuiDataGrid-columnHeaderCheckbox {
+    display: none;
+  }
+  
+  .hide-checkbox .MuiDataGrid-cellCheckbox {
+    display: none;
+
+  }
+
+  :where(.css-dev-only-do-not-override-fpg3f5).ant-upload-wrapper.ant-upload-picture-card-wrapper, 
+  :where(.css-dev-only-do-not-override-fpg3f5).ant-upload-wrapper.ant-upload-picture-circle-wrapper{
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  :where(.css-dev-only-do-not-override-fpg3f5).ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload.ant-upload-select, :where(.css-dev-only-do-not-override-fpg3f5).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select{
+    width: 100% !important;
+    height: 100% !important;
+  }
+  :where(.css-byeoj0).ant-picker-dropdown{
+    z-index: 999999;
+  }
+  .ant-picker-dropdown{
+    z-index: 999999!important;
+  }

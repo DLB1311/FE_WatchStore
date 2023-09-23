@@ -1,0 +1,11 @@
+.title-order-info{
+display: flex;
+justify-content: space-between;
+margin-top: 32px;
+margin-bottom: 32px;
+}
+
+.title-order-info .status-txt{
+    color: #C09E57;
+    text-transform: uppercase;
+}
