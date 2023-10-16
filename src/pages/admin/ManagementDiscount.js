@@ -31,8 +31,6 @@ const ManagementDiscount = () => {
         
     }, []);
 
-
-
     return (
 
         <SideBar >

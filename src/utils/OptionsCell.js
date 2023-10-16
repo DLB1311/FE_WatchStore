@@ -8,7 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import TuneIcon from '@mui/icons-material/Tune';
 
-const OptionsCell = ({ onEdit, onDelete , onCustom,onCusDiscount  }) => {
+const OptionsCell = ({ onEdit, onDelete , onCustom,onCusDiscount,onWholeSaleOrder,onWholeSaleOrderDetail }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -39,6 +39,16 @@ const OptionsCell = ({ onEdit, onDelete , onCustom,onCusDiscount  }) => {
     handleClose();
   };
 
+  const handleWholeSaleOrder= () => {
+    onWholeSaleOrder();
+    handleClose();
+  }; 
+
+  const handleWholeSaleOrderDetail= () => {
+    onWholeSaleOrderDetail();
+    handleClose();
+  }; 
+
   return (
     <div>
       <IconButton
@@ -55,14 +65,21 @@ const OptionsCell = ({ onEdit, onDelete , onCustom,onCusDiscount  }) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
+
+{onEdit  && (
         <MenuItem onClick={handleEdit}>
           <EditIcon style={{ marginRight: '8px' }} />
           Edit
         </MenuItem>
+        )}
+
+        {onDelete  && (
         <MenuItem onClick={handleDelete}>
           <DeleteIcon style={{ marginRight: '8px' }} />
           Delete
         </MenuItem>
+        )}
+
         {onCustom  && (
           <MenuItem onClick={handleCustom}>
             <TuneIcon style={{ marginRight: '8px' }} />
@@ -73,6 +90,19 @@ const OptionsCell = ({ onEdit, onDelete , onCustom,onCusDiscount  }) => {
           <MenuItem onClick={handleCusDiscount}>
             <TuneIcon style={{ marginRight: '8px' }} />
             Edit Detail
+          </MenuItem>
+        )}
+        {onWholeSaleOrder && (
+          <MenuItem onClick={handleWholeSaleOrder}>
+            <TuneIcon style={{ marginRight: '8px' }} />
+            Đơn đặt hàng
+          </MenuItem>
+        )}
+
+        {onWholeSaleOrderDetail && (
+          <MenuItem onClick={handleWholeSaleOrderDetail}>
+            <TuneIcon style={{ marginRight: '8px' }} />
+            Chi tiết
           </MenuItem>
         )}
       </Menu>

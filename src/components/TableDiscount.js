@@ -99,6 +99,7 @@ const TableStaff = () => {
         setOpenModal(false);
 
     };
+    
     const handleAddDiscountSubmit = async (event) => {
         event.preventDefault();
 
@@ -270,7 +271,6 @@ const TableStaff = () => {
         }
     };
 
-
     const fetchDiscountDetails = async (discount) => {
         try {
             const token = getCookie("tokenAdmin");
@@ -324,7 +324,7 @@ const TableStaff = () => {
                 },
             });
             if (response.data.success) {
-                const discounts = response.data.data;
+                const discounts = response.data.discountList;
 
                 const discountsWithId = discounts.map((discount) => ({
                     ...discount,
@@ -360,7 +360,6 @@ const TableStaff = () => {
             console.error(error);
         }
     };
-
 
     const handleOpenModalDiscountDetail = async (discount) => {
         const discountDetails = await fetchDiscountDetails(discount);
@@ -775,14 +774,6 @@ const TableStaff = () => {
                                 onChange={(event, newValue) => setSelectedWatch(newValue)}
                                 renderInput={(params) => <TextField {...params} label="Select Watch" />}
                                 style={{ marginBottom: "15px" }}
-                            />
-                            <TextField
-                                label="Discount Percentage"
-                                value={discountPercentage}
-                                onChange={(e) => setDiscountPercentage(e.target.value)}
-                                fullWidth
-                                style={{ marginBottom: "30px" }}
-
                             />
                             <div style={{ display: "flex", justifyContent: "center", marginBottom: "15px" }}>
                                 <Button

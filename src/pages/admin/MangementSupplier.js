@@ -18,14 +18,28 @@ import Typography from '@mui/material/Typography';
 import getCookie from '../../utils/getCookie';
 import OptionsCell from '../../utils/OptionsCell';
 
-import TableDiscount from "../../components/TableDiscount";
 
+import WholeSaleOrderModal from '../../components/WholeSaleOrderModal';
+import formatDate from "../../utils/formatDate";
 
 const MangementSupplier = () => {
     const navigate = useNavigate();
     const [suppliers, setSuppliers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
+
+    const [showWholeSaleOrderModal, setShowWholeSaleOrderModal] = useState(false);
+    const [supplier, setSupplier] = useState('');
+
+
+
+    const openWholeSaleOrderModal = () => {
+        setShowWholeSaleOrderModal(true);
+    };
+
+    const closeWholeSaleOrderModal = () => {
+        setShowWholeSaleOrderModal(false);
+    };
 
     const [showAddModal, setShowAddModal] = useState(false);
     const [newSupplierData, setNewSupplierData] = useState({
@@ -121,6 +135,7 @@ const MangementSupplier = () => {
                 <OptionsCell
                     onEdit={() => handleEditSupplier(params.row)}
                     onDelete={() => handleDeleteSupplier(params.row.MaNCC)}
+                    onWholeSaleOrder={() => handleOpenModalWholeSaleOrder(params.row.MaNCC)}
                 />
             ),
         },
@@ -288,6 +303,14 @@ const MangementSupplier = () => {
     });
     const getRowId = (row) => row.MaNCC;
 
+    
+    const handleOpenModalWholeSaleOrder = async (supplier) => {
+            setSupplier(supplier);
+            openWholeSaleOrderModal();
+        
+    };
+
+
     return (
 
         <SideBar>
@@ -353,6 +376,12 @@ const MangementSupplier = () => {
                     </form>
                 </Box>
             </Modal>
+
+            <WholeSaleOrderModal
+                open={showWholeSaleOrderModal}
+                onClose={closeWholeSaleOrderModal}
+                supplier={supplier}
+            />
         </SideBar>
     );
 };
