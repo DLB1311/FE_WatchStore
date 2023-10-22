@@ -79,8 +79,8 @@ const Profile = () => {
         } catch (error) {
             setCustomer(null);
             Swal({
-                title: error.message,
-                text: "",
+                title: "Lỗi",
+                text: error.response.data.message,
                 icon: "error",
                 dangerMode: true,
             }).then(() => {

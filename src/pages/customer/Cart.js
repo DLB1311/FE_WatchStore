@@ -381,7 +381,7 @@ const Cart = () => {
       }
     } catch (error) {
       console.error(error);
-      Swal.fire("Error", "An error occurred while placing the order", "error");
+      Swal.fire("Error", error.response.data.message, "error");
       await fetchItems();
     }
   };
