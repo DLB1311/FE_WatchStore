@@ -15,13 +15,13 @@ import formatDate from "../utils/formatDate";
 import formatDateTime from "../utils/formatDateTime";
 import TextField from "@mui/material/TextField";
 import numberToWords from '../utils/numberToWords'
-import  { getPrintableContent, printInvoice } from '../utils/printInvoice';
+import { getPrintableContent, printInvoice } from '../utils/printInvoice';
 
 const InvoiceModal = ({
     isAddInvoiceModalOpen,
     setIsAddInvoiceModalOpen,
     selectedBookingOrder,
-    handleInvoiceCreated, 
+    handleInvoiceCreated,
 }) => {
     const navigate = useNavigate();
 
@@ -74,10 +74,10 @@ const InvoiceModal = ({
                     text: "The invoice has been created successfully.",
                 });
 
-                
+
                 setInvoiceData(response.data.data);
                 setIsAddInvoiceModalOpen(false);
-                
+
                 const printableContent = getPrintableContent(response.data.data);
                 printInvoice(printableContent);
                 handleInvoiceCreated();
@@ -157,21 +157,21 @@ const InvoiceModal = ({
                         onChange={(e) => setHoTen(e.target.value)}
                         sx={{ mb: 2 }}
                     />
- <Box display="flex" justifyContent="flex-end" mt={2}>
-     <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={handleCreateInvoice}
-                        style={{
-                            backgroundColor: "black" ,
-                            color:  "white",
-                            
-                          }}
-                    >
-                        Create Invoice
-                    </Button>
- </Box>
-                    
+                    <Box display="flex" justifyContent="flex-end" mt={2}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleCreateInvoice}
+                            style={{
+                                backgroundColor: "black",
+                                color: "white",
+
+                            }}
+                        >
+                            Create Invoice
+                        </Button>
+                    </Box>
+
 
                 </Box>
             </Modal>

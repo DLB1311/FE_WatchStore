@@ -396,6 +396,18 @@ const TableStaff = () => {
             navigate("/admin/signin");
             return;
         }
+
+        if (!selectedWatch) {
+            // Show a SweetAlert notification for missing date range
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Please fill in all information",
+            });
+            return;
+          }
+
+          
         try {
             const response = await API.post(
                 'management/addDiscountDetails',
@@ -775,6 +787,15 @@ const TableStaff = () => {
                                 renderInput={(params) => <TextField {...params} label="Select Watch" />}
                                 style={{ marginBottom: "15px" }}
                             />
+
+                            <TextField
+                                label="Discount Percentage"
+                                value={discountPercentage}
+                                onChange={(e) => setDiscountPercentage(e.target.value)}
+                                fullWidth
+                                style={{ marginBottom: "30px" }}
+                            />
+
                             <div style={{ display: "flex", justifyContent: "center", marginBottom: "15px" }}>
                                 <Button
                                     variant="contained"

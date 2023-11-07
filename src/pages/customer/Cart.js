@@ -316,6 +316,15 @@ const Cart = () => {
         return;
       }
 
+      if (!receiverInfo.firstName || !receiverInfo.lastName  || !receiverInfo.address  || !receiverInfo.phone ) {
+        // Show a SweetAlert notification for missing date range
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Please fill in all information",
+        });
+        return;
+      }
       // Prepare the order data
       const orderData = {
         firstName: receiverInfo.firstName,

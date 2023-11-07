@@ -42,6 +42,18 @@ const AdminHome = () => {
       navigate('/admin/signin');
       return;
     }
+
+    if (!fromDate || !toDate) {
+      // Show a SweetAlert notification for missing date range
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Please select a date range before printing the report.",
+      });
+      return;
+    }
+
+    
     try {
       const formattedFromDate = fromDate.format(dateFormat);
       const formattedToDate = toDate.format(dateFormat);

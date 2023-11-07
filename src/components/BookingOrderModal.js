@@ -268,7 +268,7 @@ const BookingOrderModal = ({
               </Button>
             </Box>
           )}
-          {selectedBookingOrder.TrangThai === 2 &&
+          {selectedBookingOrder.TrangThai === 2 || selectedBookingOrder.TrangThai === 3 &&
             !selectedBookingOrder.MaHD && (
               <Button
                 variant="contained"

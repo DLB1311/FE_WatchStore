@@ -150,6 +150,16 @@ const TableStaff = () => {
             return;
         }
 
+        if (!editingStaff.Ho || !editingStaff.Ten || !editingStaff.GioiTinh|| !editingStaff.NgaySinh|| !editingStaff.DiaChi|| !editingStaff.SDT|| !editingStaff.Email|| !editingStaff.MaQuyen) {
+            // Show a SweetAlert notification for missing date range
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Please fill in all information",
+            });
+            return;
+        }
+
         try {
             // Make an API request to update the staff member's information
             const response = await API.put(
@@ -255,6 +265,16 @@ const TableStaff = () => {
             navigate("/admin/signin");
             return;
         }
+
+        if (!lastName || !firstName || !gender|| !ngaySinh|| !diaChi|| !phone|| !email|| !password|| !selectedRole) {
+            // Show a SweetAlert notification for missing date range
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Please fill in all information",
+            });
+            return;
+          }
 
         try {
             // Make an API request to add the new staff member

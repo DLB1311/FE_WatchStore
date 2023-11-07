@@ -95,14 +95,14 @@ const OptionsCell = ({ onEdit, onDelete , onCustom,onCusDiscount,onWholeSaleOrde
         {onWholeSaleOrder && (
           <MenuItem onClick={handleWholeSaleOrder}>
             <TuneIcon style={{ marginRight: '8px' }} />
-            Đơn đặt hàng
+            Supplier Purchase Order
           </MenuItem>
         )}
 
         {onWholeSaleOrderDetail && (
           <MenuItem onClick={handleWholeSaleOrderDetail}>
             <TuneIcon style={{ marginRight: '8px' }} />
-            Chi tiết
+            Detail
           </MenuItem>
         )}
       </Menu>

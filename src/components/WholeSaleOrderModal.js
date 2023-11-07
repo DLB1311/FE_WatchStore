@@ -78,6 +78,16 @@ const WholeSaleOrderModal = ({ open, onClose, supplier }) => {
                 return;
             }
 
+            if (!noteId ) {
+                // Show a SweetAlert notification for missing date range
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "Please fill in all information",
+                });
+                return;
+              }
+
             const response = await API.post(`received_note/addNote/${orderIDSelected}`, {
                 noteId: noteId,
             }, {
@@ -198,6 +208,17 @@ const WholeSaleOrderModal = ({ open, onClose, supplier }) => {
             navigate("/admin/signin");
             return;
         }
+
+        if (!orderID) {
+            // Show a SweetAlert notification for missing date range
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Please fill in all information",
+            });
+            return;
+        }
+
         try {
             const response = await API.post(
                 '/wholesale_order/addOrder',
@@ -313,6 +334,16 @@ const WholeSaleOrderModal = ({ open, onClose, supplier }) => {
             const token = getCookie("tokenAdmin");
             if (!token) {
                 navigate("/admin/signin");
+                return;
+            }
+
+            if (!selectedWatch ||!quantity ||!price ) {
+                // Show a SweetAlert notification for missing date range
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "Please fill in all information",
+                });
                 return;
             }
 
@@ -434,7 +465,7 @@ const WholeSaleOrderModal = ({ open, onClose, supplier }) => {
                     }}
                 >
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '30px' }}>
-                        <h2>Đơn đặt hàng</h2>
+                        <h2>Supplier Purchase Order</h2>
                         {addingOrder ? (
                             <div>
                                 <Button style={{ backgroundColor: "black", color: "white", marginRight: "10px" }} onClick={handleAddOrder}>
@@ -449,7 +480,7 @@ const WholeSaleOrderModal = ({ open, onClose, supplier }) => {
                                 style={{ backgroundColor: "black", color: "white", marginRight: "10px" }}
                                 onClick={() => setAddingOrder(true)}
                             >
-                                + Thêm đơn đặt hàng
+                                +ADD Supplier Purchase Order
                             </Button>
                         )}
                     </div>
@@ -510,7 +541,7 @@ const WholeSaleOrderModal = ({ open, onClose, supplier }) => {
                     }}
                 >
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '30px' }}>
-                        <h2>Chi tiết đơn đặt hàng</h2>
+                        <h2>Supplier Purchase Order Detail</h2>
                         {addingOrder ? (
                             <div>
                                 <Button style={{ backgroundColor: "black", color: "white", marginRight: "10px" }} onClick={handleSaveOrderDetails}>
@@ -525,7 +556,7 @@ const WholeSaleOrderModal = ({ open, onClose, supplier }) => {
                                 style={{ backgroundColor: "black", color: "white", marginRight: "10px" }}
                                 onClick={handleAddOrderDetails}
                             >
-                                + Thêm chi tiết đơn đặt hàng
+                                + ADD Supplier Purchase Order Detail
                             </Button>
                         )}
                     </div>

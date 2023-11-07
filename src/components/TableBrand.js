@@ -115,6 +115,15 @@ const TableBrand = ({ onBrandSelected }) => {
             return;
         }
 
+        if (!newBrand.MaHang || !newBrand.TenHang ) {
+            // Show a SweetAlert notification for missing date range
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Please fill in all information",
+            });
+            return;
+          }
         try {
             // Gửi yêu cầu thêm mới thông tin thương hiệu
             const response = await API.post(
